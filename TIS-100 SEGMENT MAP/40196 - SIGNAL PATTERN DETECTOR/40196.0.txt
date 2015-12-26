@@ -1,0 +1,51 @@
+@0
+
+
+@1
+^:
+SWP
+MOV UP,ACC
+JNZ RESET
+ SWP
+ ADD 1
+ MOV ACC, DOWN
+ JMP ^
+RESET:
+ SWP
+ MOV 0,ACC
+ MOV ACC, DOWN
+
+@2
+
+
+@3
+
+
+@4
+^:
+MOV UP ACC
+SUB 2
+JGZ YES
+NO:
+  MOV 0,DOWN
+  JMP ^
+YES:
+ MOV 1,DOWN
+
+@5
+
+
+@6
+
+
+@7
+
+
+@8
+MOV UP,RIGHT
+
+@9
+MOV LEFT,DOWN
+
+@10
+

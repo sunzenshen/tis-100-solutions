@@ -1,0 +1,63 @@
+@0
+
+
+@1
+^: MOV UP, ACC
+SUB 1
+JEZ 1ST
+SUB 3
+JEZ 4TH
+SUB 1
+JEZ 5TH
+ELS: MOV 11 DOWN
+     JMP ^
+1ST: MOV 1 DOWN
+     JMP ^
+4TH: MOV 7 DOWN
+     JMP ^
+5TH: MOV 3 DOWN
+
+@2
+
+
+@3
+
+
+@4
+JRO UP
+1: MOV 1 ACC
+   JMP GO
+5: SUB 1
+   JNZ CANCEL
+   MOV 2 ACC
+   JMP GO
+4: SUB 2
+   JNZ CANCEL
+   MOV 3 ACC
+   JMP GO
+CANCEL: MOV 0 ACC
+GO: MOV ACC DOWN
+
+@5
+
+
+@6
+
+
+@7
+
+
+@8
+^: MOV UP, ACC
+SUB 3
+JNZ MISS
+MOV 1, RIGHT
+JMP ^
+MISS:
+MOV 0 RIGHT
+
+@9
+MOV ANY DOWN
+
+@10
+
