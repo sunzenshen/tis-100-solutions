@@ -1,0 +1,82 @@
+@0
+## UNCONDITIONAL
+MOV UP DOWN
+
+@1
+
+
+@2
+
+
+@3
+
+
+@4
+MOV UP DOWN
+
+@5
+MOV UP ACC
+#REP:  -2-1 0 1 2
+ADD 3
+#BECOME 1 2 3 4 5
+ADD ACC
+#DOUBLE 2 4 6 8 10
+MOV ACC RIGHT
+
+# NORMALIZE RANGE
+# TO NON-NEG AND
+#    NON-ZERO
+# AND DOUBLE THAT
+# TO LEAVE SPACE
+# IN JUMP TABLES
+# FOR EARLY RETURN
+
+@6
+# IN > 0
+
+^: MOV LEFT ACC
+MOV ACC RIGHT
+JRO ACC
+NOP       #1
+NOP       #2 >> -2
+NOP       #3
+NOP       #4 >> -1
+NOP       #5
+MOV 0 DOWN#6 >>  0
+JMP ^     #7
+NOP       #8 >>  1
+NOP       #9
+MOV 1 DOWN#10>>  2
+
+@7
+# IN = 0
+
+^: MOV LEFT ACC
+MOV ACC RIGHT
+JRO ACC
+NOP       #1
+NOP       #2 >> -2
+NOP       #3
+MOV 0 DOWN#4 >> -1
+JMP ^     #5
+MOV 1 DOWN#6 >>  0
+JMP ^     #7
+NOP       #8 >>
+NOP       #9
+MOV 0 DOWN#10>>  2
+
+@8
+# IN < 0
+
+^: MOV LEFT ACC
+JRO ACC
+NOP       #1
+NOP       #2 >> -2
+NOP       #3
+MOV 1 DOWN#4 >> -1
+JMP ^     #5:
+NOP       #6 >>  0
+NOP       #7
+NOP       #8 >>  1
+NOP       #9
+MOV 0 DOWN#10>>  2
