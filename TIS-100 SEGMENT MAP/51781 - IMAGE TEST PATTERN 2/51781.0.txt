@@ -1,0 +1,64 @@
+@0
+## BAK
+
+@1
+
+
+@2
+
+
+@3
+
+
+@4
+
+
+@5
+
+
+@6
+
+
+@7
+MOV 1 RIGHT
+MOV 0 RIGHT
+
+@8
+^:
+MOV ACC RIGHT
+ADD 2
+SAV
+SUB 30
+JLZ GO
+END:
+  SWP
+  MOV 0 ACC
+  ADD LEFT
+  JMP ^
+GO:
+  SWP
+
+@9
+MOV LEFT  DOWN
+MOV RIGHT DOWN
+
+# DRAW WHITE PIXEL
+MOV  3 DOWN
+MOV -1 DOWN
+
+@10
+MOV 14 ACC #BLOCKS
+SWP        # ROW
+^:
+MOV ACC LEFT #ROW
+SWP
+JEZ END
+
+GO:
+  SUB 1
+  SWP
+  JMP ^
+END: #REST TO END
+  SWP
+  ADD 1
+  SWP
